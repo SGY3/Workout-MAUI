@@ -1,4 +1,6 @@
-﻿namespace Workout
+﻿using Workout.MVVM.Views;
+
+namespace Workout
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new ExercisePage());
         }
     }
 }
