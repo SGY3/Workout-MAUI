@@ -15,6 +15,19 @@ namespace Workout.MVVM.ViewModels
         public MainPageViewModel()
         {
             LoadData();
+            Calculation();
+        }
+
+        public void Calculation()
+        {
+            foreach (var category in Categories)
+            {
+                var exerciseByCategory = Exercises.Where(x => x.CategoryId == category.Id).ToList();
+                var pending = exerciseByCategory.Where(i => i.IsCompleted == false).ToList();
+                category.PendingExercises = pending.Count();
+                var completedExercises = exerciseByCategory.Where(i => i.IsCompleted == true).ToList();
+                category.Percentage = (double)completedExercises.Count() / (double)exerciseByCategory.Count();
+            }
         }
 
         private void LoadData()
@@ -33,16 +46,16 @@ namespace Workout.MVVM.ViewModels
             };
             Exercises = new ObservableCollection<Exercise>()
             {
-                new Exercise{Name="Plank", CategoryId=1,IsCompleted=false},
-                new Exercise{Name="Plank", CategoryId=2,IsCompleted=false},
+                new Exercise{Name="Plank", CategoryId=1,IsCompleted=true},
+                //new Exercise{Name="Plank", CategoryId=2,IsCompleted=false},
                 new Exercise{Name="Bicycle Crunch", CategoryId=1,IsCompleted=false},
-                new Exercise{Name="Bicycle Crunch", CategoryId=3,IsCompleted=false},
+                //new Exercise{Name="Bicycle Crunch", CategoryId=3,IsCompleted=false},
                 new Exercise{Name="Pushups", CategoryId=7,IsCompleted=false},
-                new Exercise{Name="Pushups", CategoryId=5,IsCompleted=false},
+                //new Exercise{Name="Pushups", CategoryId=5,IsCompleted=false},
                 new Exercise{Name="Running", CategoryId=5,IsCompleted=false},
-                new Exercise{Name="Running", CategoryId=8,IsCompleted=false},
+                //new Exercise{Name="Running", CategoryId=8,IsCompleted=false},
                 new Exercise{Name="Squats", CategoryId=3,IsCompleted=false},
-                new Exercise{Name="Squats", CategoryId=4,IsCompleted=false},
+                //new Exercise{Name="Squats", CategoryId=4,IsCompleted=false},
                 new Exercise{Name="Tricep Dips", CategoryId=6,IsCompleted=false},
             };
         }

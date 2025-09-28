@@ -4,9 +4,15 @@ namespace Workout.MVVM.Views;
 
 public partial class ExercisePage : ContentPage
 {
+    MainPageViewModel vm = new MainPageViewModel();
     public ExercisePage()
     {
         InitializeComponent();
-        BindingContext = new MainPageViewModel();
+        BindingContext = vm;
+    }
+
+    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        vm.Calculation();
     }
 }

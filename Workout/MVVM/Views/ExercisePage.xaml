@@ -16,7 +16,13 @@
                         <Grid Padding="10">
                             <Border StyleClass="CategoryCard">
                                 <VerticalStackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Text="{Binding PendingExercises, StringFormat='{0} Pending'}" StyleClass="Header,Black"/>
                                     <Label Text="{Binding Title}" StyleClass="Header,Black"/>
+                                    <ProgressBar 
+                                                Progress="{Binding Percentage}" 
+                                                HeightRequest="10" 
+                                                ProgressColor="Green"
+                                                BackgroundColor="LightGray"/>
                                 </VerticalStackLayout>
                             </Border>
                         </Grid>
@@ -24,6 +30,20 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-
+        <Grid Grid.Row="2" RowDefinitions=".1*,.9*">
+            <Label Text="All Exercises" StyleClass="Header,DarkGray"/>
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Exercises}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <HorizontalStackLayout>
+                                <CheckBox CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsCompleted}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Name}" VerticalOptions="Center" StyleClass="Header,Black"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </Grid>
 </ContentPage>
