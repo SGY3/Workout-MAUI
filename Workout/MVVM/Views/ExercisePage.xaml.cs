@@ -15,4 +15,18 @@ public partial class ExercisePage : ContentPage
     {
         vm.Calculation();
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        var model = new AddNew
+        {
+            BindingContext = new AddNewViewModel
+            {
+                Exercises = vm.Exercises,
+                Categories = vm.Categories,
+            }
+        };
+        Navigation.PushAsync(model);
+
+    }
 }

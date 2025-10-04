@@ -14,5 +14,6 @@ namespace Workout.MVVM.Models
         public string Title { get; set; }
         public int PendingExercises { get; set; }
         public double Percentage { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

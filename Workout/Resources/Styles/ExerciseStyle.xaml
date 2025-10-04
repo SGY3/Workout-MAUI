@@ -15,9 +15,26 @@
     </Style>
     <Style TargetType="Label" Class="Header">
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="Title"/>
+        <Setter Property="FontSize" Value="Large"/>
     </Style>
+    <Style TargetType="Label" Class="Logo">
+        <Setter Property="VerticalOptions" Value="Center"/>
 
+    </Style>
+    <EllipseGeometry
+        x:Key="CircleButton"
+        RadiusX="30"
+        RadiusY="30"
+        Center="50,50"/>
+    <Style TargetType="Button" x:Key="PlusButton">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="WidthRequest" Value="100"/>
+        <Setter Property="HeightRequest" Value="100"/>
+        <Setter Property="Clip" Value="{StaticResource CircleButton}"/>
+    </Style>
     <!-- Shadow Resource -->
     <Shadow x:Key="RoundShadow"
             Brush="Gray"
@@ -36,5 +53,11 @@
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Shadow" Value="{StaticResource RoundShadow}"/>
     </Style>
-
+    <Style TargetType="Entry" Class="EntryDec">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="PlaceholderColor" Value="LightPink"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+    </Style>
 </ResourceDictionary>
